@@ -1,11 +1,14 @@
 import { defineAuth } from '@aws-amplify/backend';
 
-/**
- * Define and configure your auth resource
- * @see https://docs.amplify.aws/gen2/build-a-backend/auth
- */
 export const auth = defineAuth({
   loginWith: {
-    email: true,
+    email: true, // 启用邮箱登录
+  },
+  attributes: {
+    required: ['email'], // 确保邮箱是必填字段
+  },
+  verification: {
+    email: true, // 注册后需要邮箱验证
   },
 });
+
